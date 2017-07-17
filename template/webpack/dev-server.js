@@ -1,3 +1,4 @@
+require('babel-core/register')
 const path = require('path')
 const express = require('express')
 const opn = require('opn')

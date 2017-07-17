@@ -19,7 +19,7 @@
         },
         methods: {
             login() {
-                this.$ajax.post('/admin/login').then(res => {
+                this.$ajax.post('/api/admin/login').then(res => {
                     this.islogin = !this.islogin
                     console.log(res)
                 })

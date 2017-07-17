@@ -4,12 +4,11 @@
  */
 const express = require('express')
 const router = express.Router()
-const template = require('../template')
-const config = require('./view/config')
+const config = require('./config').view
 
 config.forEach((item, index) => {
-    router.get(item.path, (req, res) => {
-        res.send(template.render(item.view))
+    router.get(item.path, (req, res, next) => {
+        item.con(req, res, next, item)
     })
 })
 

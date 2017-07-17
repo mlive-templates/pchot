@@ -6,11 +6,12 @@ const express = require('express')
 const router = express.Router()
 
 const viewRouter = require('./view')
-const viewErrorPageRouter = require('./errorPage')
-const admin = require('./admin')
+const apiRouter = require('./api')
 
 router.use('/', viewRouter)
-router.use('/admin', admin)
-router.use('*', viewErrorPageRouter)
+router.use('/api', apiRouter)
+router.use('*', (req, res) => {
+    res.redirect('/404')
+})
 
 module.exports = router

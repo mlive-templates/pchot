@@ -16,7 +16,7 @@ function getClientEntry(_p = '/src/client/entry') {
     files.forEach((val, index) => {
         if (val.indexOf('.js') > -1) {
             const name = val.substr(val.lastIndexOf('/') + 1, val.indexOf('.js'))
-            entry[name] = readPath + '/' + val
+            entry[name] = ['babel-polyfill', readPath + '/' + val]
         }
     })
     return entry
