@@ -3,7 +3,6 @@ const app = _app.app
 const router = _app.router
 const http = require('http')
 const config = require('../config')
-// const mongoose = require('mongoose')
 const server = http.createServer(app)
 
 const port = normalizePort(config.port || '3000')
@@ -11,10 +10,6 @@ app.set('port', port)
 
 app.use('/', router)
 listen()
-// connect()
-//     .on('error', console.log)
-//     .on('disconnected', connect)
-//     .once('open', listen)
 
 function listen() {
     server.on('error', onError)
@@ -22,16 +17,6 @@ function listen() {
     server.listen(port)
 }
 
-// function connect() {
-//     var options = {
-//         server: {
-//             socketOptions: {
-//                 keepAlive: 1
-//             }
-//         }
-//     }
-//     return mongoose.connect(config.db, options).connection
-// }
 
 function normalizePort(val) {
     var port = parseInt(val, 10)

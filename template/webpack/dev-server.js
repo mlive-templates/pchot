@@ -6,8 +6,6 @@ const _app = require('../src/server/index')
 const app = _app.app
 const router = _app.router
 
-// const mongoose = require('mongoose')
-
 
 const config = require('../config')
 process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
@@ -64,19 +62,3 @@ devMiddleware.waitUntilValid(() => {
 })
 
 app.listen(port)
-// function connect() {
-//     var options = {
-//         server: {
-//             socketOptions: {
-//                 keepAlive: 1
-//             }
-//         }
-//     }
-//     return mongoose.connect('mongodb://admin:123456@192.168.217.144/statistic-error', options).connection
-// }
-// connect()
-//     .on('error', console.log)
-//     .on('disconnected', connect)
-//     .once('open', function () {
-//         app.listen(port)
-//     })
