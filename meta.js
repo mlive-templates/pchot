@@ -15,10 +15,6 @@ module.exports = {
             "type": "input",
             "message": "Author"
         },
-        "router": {
-            "type": "confirm",
-            "message": "Install vue-router?"
-        },
         "vuex": {
             "type": "confirm",
             "message": "Install vuex?"
