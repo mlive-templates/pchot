@@ -1,10 +1,9 @@
 <template>
     <div id="app">
-        <header>
+        <!--<header>
             <div class="login fr" v-show="!islogin" @click="login">登录</div>
             <div class="logout fr" v-show="islogin" @click="logout">注销</div>
-        </header>
-        <h1>Hello Mtimei</h1>
+        </header>-->
         <div class="pic"></div>
     </div>
 </template>
@@ -14,32 +13,27 @@
         name: 'app',
         data: function () {
             return {
-                islogin: false
+                // islogin: false
             }
         },
-        methods: {
-            login() {
-                this.$ajax.post('/api/admin/login').then(res => {
-                    this.islogin = !this.islogin
-                    console.log(res)
-                })
-            },
-            logout() {
-                this.$ajax.get('/admin/logout').then(res => {
-                    this.islogin = !this.islogin
-                    console.log(res)
-                })
-            }
-        }
+        // methods: {
+        //     login() {
+        //         this.$ajax.post('/api/admin/login').then(res => {
+        //             this.islogin = !this.islogin
+        //             console.log(res)
+        //         })
+        //     },
+        //     logout() {
+        //         this.$ajax.get('/admin/logout').then(res => {
+        //             this.islogin = !this.islogin
+        //             console.log(res)
+        //         })
+        //     }
+        // }
     }
 </script>
 
-<style lang="less">
-    body {
-        max-width: 960px;
-        margin: 0 auto;
-    }
-
+<style lang="less" scoped>
     header {
         overflow: hidden;
     }
@@ -54,6 +48,7 @@
     }
 
     .pic {
+        margin-top: 100px;
         background-image: url('../assets/image/logo.jpg');
         background-repeat: no-repeat;
         background-position: center center;

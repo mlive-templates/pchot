@@ -1,12 +1,33 @@
 const config = require('./config')
+const path = require('path')
+const fs = require('fs-extra')
+
+let cacheAssetsJson = ''
+/**
+ * 开发环境和生产环境 路径不同
+ */
+function getAssetsJson(env) {
+    if (cacheAssetsJson) {
+        return cacheAssetsJson
+    }
+    const _p = env ? '../../client-assets.json' : './bundles/client-assets.json'
+    cacheAssetsJson = fs.readJsonSync(path.join(__dirname, _p))
+    return cacheAssetsJson
+}
 
 function render(name) {
     const staticServer = config.staticServer
     const cdn = config.cdn
     const env = config.name
     const startup = config.startup
-    const jsPath = !cdn ? '' : staticServer + '/' + cdn + '/script'
-    const cssPath = !cdn ? '' : staticServer + '/' + cdn + '/css'
+    const assetsJson = getAssetsJson(!cdn)
+    const publicPath = !cdn ? '' : staticServer + '/' + cdn
+    const css = assetsJson[name].css.map(function (item) {
+        return `<link rel="stylesheet" href="${publicPath}/${item}" />`
+    }).join('')
+    const scripts = assetsJson[name].js.map(function (item) {
+        return `<script type="text/javascript" src="${publicPath}/${item}"></script>`
+    }).join('')
     const html = `
     <!doctype html>
     <html>
@@ -26,19 +47,23 @@ function render(name) {
         <link type="image/x-icon" href="//static1.mtime.cn/favicon.ico" rel="shortcut icon" />
         <link type="image/x-icon" href="//static1.mtime.cn/favicon.ico" rel="bookmark" />
         <link rel="apple-touch-icon" href="//static1.mtime.cn/favicon.ico" />
-        <link rel="stylesheet" href="${cssPath}/${name}.css">
-        <title>时光分发平台</title>
+        ${css}
+        <title>错误信息收集平台</title>
     </head>
     <body>
         <div id="app"></div>
-        <script type="text/javascript" src="${jsPath}/vendor.js"></script>
-        <script type="text/javascript" src="${jsPath}/${name}.js"></script>
+        ${scripts}
     </body>
     </html>
     `
     return html
 }
 
+function renderError() {
+    return render('404')
+}
+
 module.exports = {
-    render
+    render,
+    renderError
 }

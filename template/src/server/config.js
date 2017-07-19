@@ -8,45 +8,25 @@ const baseConfig = {
         logs: './logs',
         port: '8092',
         staticServer: '//static1.mtime.cn',
-        dbhost: '192.168.50.56',
-        dbport: '3306',
-        dbdatabase: 'dispatch_db',
-        dbuser: 'mtimeuser',
-        dbpassword: 'mtimeuser0301'
+        db: 'mongodb://root:root@192.168.217.144/statistic-error'
     },
     dev: {
         name: 'dev',
         staticServer: '',
-        dbhost: '192.168.50.56',
-        dbport: '3306',
-        dbdatabase: 'dispatch_db',
-        dbuser: 'mtimeuser',
-        dbpassword: 'mtimeuser0301'
+        db: 'mongodb://root:root@192.168.217.144/statistic-error'
     },
     qa: {
         name: 'qa',
         staticServer: '',
-        dbhost: '192.168.50.56',
-        dbport: '3306',
-        dbdatabase: 'dispatch_db',
-        dbuser: 'mtimeuser',
-        dbpassword: 'mtimeuser0301'
+        db: 'mongodb://root:root@192.168.217.144/statistic-error'
     },
     pre: {
         name: 'pre',
-        dbhost: 'db-mysqlmaster00.inc-mtime.com',
-        dbport: '3308',
-        dbdatabase: 'dispatch_db',
-        dbuser: 'mtimeuser',
-        dbpassword: 'mtimeuser%^'
+        db: 'mongodb://root:root@192.168.217.144/statistic-error'
     },
     prod: {
         name: 'prod',
-        dbhost: 'db-mysqlmaster00.inc-mtime.com',
-        dbport: '3308',
-        dbdatabase: 'dispatch_db',
-        dbuser: 'mtimeuser',
-        dbpassword: 'mtimeuser%^'
+        db: 'mongodb://root:root@192.168.217.144/statistic-error'
     }
 }
 
@@ -82,11 +62,7 @@ function init() {
         logs: get('logs', config),
         port: get('port', config),
         staticServer: get('staticServer', config),
-        dbhost: get('dbhost', config),
-        dbport: get('dbport', config),
-        dbdatabase: get('dbdatabase', config),
-        dbuser: get('dbuser', config),
-        dbpassword: get('dbpassword', config),
+        db: get('db', config),
         cdn: get('cdn', config),
         startup: new Date()
     }

@@ -6,6 +6,7 @@ var utils = require('./utils')
 var config = require('../config')
 var webpack = require('webpack')
 var entryInfo = require('./lib/entryInfo')
+var OutPutEntryAssetsPlugin = require('./lib/outPutEntryAssetsPlugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -76,6 +77,9 @@ module.exports = {
                     ) === 0
                 )
             }
+        }),
+        new OutPutEntryAssetsPlugin({
+            filename: isProduction ? '../../../bundles/client-assets.json' : 'client-assets.json'
         })
     ]
 }

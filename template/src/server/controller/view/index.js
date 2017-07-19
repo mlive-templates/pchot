@@ -1,4 +1,4 @@
-const template = require('../../template')
+const template = require('../../render')
 const View = {
     render: (req, res, next, item) => {
         res.send(template.render(item.view))

@@ -7,11 +7,11 @@ const Admin = require('../controller/admin')
 const config = {
     view: [{
         path: '/',
-        view: 'main',
+        view: 'index',
         con: View
     }, {
-        path: '/404',
-        view: '404',
+        path: '/admin',
+        view: 'admin',
         con: View
     }],
     api: [{
